@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For You, Lovelove ❤️</title>
+    <style>
+        body {
+            background-color: #fff0f7;
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+            padding: 60px 20px;
+            overflow-x: hidden;
+        }
+
+        .fade-in {
+            animation: fadeIn 3s ease-in-out;
+            background: white;
+            padding: 40px;
+            margin: auto;
+            width: 85%;
+            border-radius: 25px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            font-size: 1.25rem;
+            line-height: 1.7;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.6rem;
+            margin-bottom: 20px;
+        }
+
+        #typing {
+            font-size: 1.3rem;
+            color: #444;
+            margin-top: 15px;
+            min-height: 50px;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #b0266a;
+        }
+
+        #hidden {
+            margin-top: 25px;
+            display: none;
+            color: #d63384;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fade-in">
+        <h1>Hi Lovelove 💖</h1>
+        <div id="typing"></div>
+        <p>
+            A little surprise to make your day brighter.<br>
+            You mean so much to me, and I want you to feel loved always. 🌸
+        </p>
+        <button onclick="document.getElementById('hidden').style.display='block'">
+            Click for a Secret 💌
+        </button>
+        <div id="hidden">
+            Lovelove, you will always be my favorite person in the world 💗
+        </div>
+    </div>
+
+    <script>
+        const message = "You are amazing, beautiful, and my everything, Lovelove 💕";
+        let index = 0;
+
+        function type() {
+            if(index < message.length) {
+                document.getElementById("typing").innerHTML += message[index];
+                index++;
+                setTimeout(type, 100); // typing speed (ms)
+            }
+        }
+
+        window.onload = type; // start typing animation when page loads
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For You, Lovelove 💌</title>
+    <style>
+        body {
+            background: linear-gradient(#ffe4f2, #fff0f7);
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+            padding: 50px 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+        }
+
+        /* Envelope */
+        #envelope {
+            font-size: 4rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        #envelope:hover {
+            transform: scale(1.2);
+        }
+
+        /* Envelope open animation */
+        #messageBox {
+            display: none;
+            background: #ffe4f2;
+            padding: 35px;
+            border-radius: 0 0 20px 20px;
+            max-width: 700px;
+            margin: -20px auto 25px auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+            text-align: left;
+            border-top: 2px solid #d63384;
+            position: relative;
+            z-index: 1;
+            animation: slideDown 1s ease forwards;
+        }
+
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        #messageBox p {
+            margin-bottom: 15px;
+        }
+
+        /* Button inside message */
+        #kissButton {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #kissButton:hover {
+            background-color: #b0266a;
+        }
+
+        /* Floating hearts and kisses */
+        .floatEmoji {
+            position: absolute;
+            font-size: 20px;
+            animation: floatUp 6s linear forwards;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(50px) scale(1); opacity: 1; }
+            100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Open Your Special Envelope 💌</h1>
+
+    <!-- Envelope icon -->
+    <button id="envelope" onclick="showMessage()">📩</button>
+
+    <!-- Message box inside envelope -->
+    <div id="messageBox">
+        <p>
+            Hey my love 💖, I know school has been exhausting lately.  
+            You’ve been working so hard and giving everything you have,  
+            and it’s okay to feel tired.
+        </p>
+
+        <p>
+            Take a deep breath and be proud of yourself —  
+            you’re doing amazing even when it feels overwhelming.  
+            I’m always here cheering for you and sending all my love. 💕
+        </p>
+
+        <button id="kissButton" onclick="sendEmojis()">Send Some Love 🌸💕</button>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgmusic" loop>
+        <source src="https://files.catbox.moe/3b2e6y.mp3" type="audio/mp3">
+    </audio>
+    <br>
+    <button onclick="document.getElementById('bgmusic').play()">Play Soft Music 🎵</button>
+
+    <script>
+        // Show message when envelope is clicked
+        function showMessage() {
+            const box = document.getElementById('messageBox');
+            box.style.display = 'block';
+            sendContinuousEmojis(); // Start floating hearts & kisses
+        }
+
+        // Send floating hearts & kisses on button click
+        function sendEmojis() {
+            for (let i = 0; i < 20; i++) {
+                createEmoji();
+            }
+        }
+
+        // Function to create single floating emoji
+        function createEmoji() {
+            const emoji = document.createElement("div");
+            emoji.className = "floatEmoji";
+            emoji.innerHTML = Math.random() > 0.5 ? "😘" : "🌸";
+            emoji.style.left = Math.random() * window.innerWidth + "px";
+            emoji.style.fontSize = (20 + Math.random() * 20) + "px";
+            emoji.style.animationDuration = (4 + Math.random() * 2) + "s";
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 6000);
+        }
+
+        // Continuous floating emojis in background
+        function sendContinuousEmojis() {
+            setInterval(() => {
+                createEmoji();
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
